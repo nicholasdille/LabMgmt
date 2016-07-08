@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<unattend xmlns="urn:schemas-microsoft-com:unattend">
+	<settings pass="windowsPE">
+		<component name="Microsoft-Windows-International-Core-WinPE" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS" xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+			<SetupUILanguage>
+				<UILanguage>en-US</UILanguage>
+			</SetupUILanguage>
+			<InputLocale>0407:00000407</InputLocale>
+			<SystemLocale>en-US</SystemLocale>
+			<UILanguage>en-US</UILanguage>
+			<UILanguageFallback>en-US</UILanguageFallback>
+			<UserLocale>en-US</UserLocale>
+		</component>
+		<component name="Microsoft-Windows-Setup" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS" xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+			<UserData>
+				<AcceptEula>true</AcceptEula>
+				<FullName>ndille</FullName>
+				<Organization></Organization>
+			</UserData>
+		</component>
+	</settings>
+	<settings pass="generalize">
+		<component name="Microsoft-Windows-Security-SPP" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS" xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+			<SkipRearm>1</SkipRearm>
+		</component>
+	</settings>
+	<settings pass="specialize">
+		<component name="Microsoft-Windows-International-Core" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS" xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+			<InputLocale>0407:00000407</InputLocale>
+			<SystemLocale>en-US</SystemLocale>
+			<UILanguage>en-US</UILanguage>
+			<UILanguageFallback>en-US</UILanguageFallback>
+			<UserLocale>en-US</UserLocale>
+		</component>
+		<component name="Microsoft-Windows-Shell-Setup" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS" xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+			<ComputerName>test</ComputerName>
+			<ProductKey>W3GGN-FT8W3-Y4M27-J84CP-Q3VJ9</ProductKey>
+		</component>
+        <component name="Microsoft-Windows-TCPIP" language="neutral" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" versionScope="nonSxS" xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+            <Interfaces>
+                <Interface>
+                    <Identifier>Ethernet 3</Identifier>
+                    <Ipv4Settings>
+                        <DhcpEnabled>false</DhcpEnabled>
+                    </Ipv4Settings>
+                    <UnicastIpAddresses>
+                        <IpAddress wcm:keyValue="1">10.0.0.30/24</IpAddress>
+                    </UnicastIpAddresses>
+                    <Routes>
+                        <Route wcm:action="add">
+                            <Identifier>0</Identifier>
+                            <Prefix>0.0.0.0/0</Prefix>
+                            <NextHopAddress>10.0.0.1</NextHopAddress>
+                            <Metric>20</Metric>
+                        </Route>
+                    </Routes>
+                </Interface>
+            </Interfaces>
+        </component>
+        <component name="Microsoft-Windows-DNS-Client" processorArchitecture="x86" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS" xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+            <DNSDomain>fabrikam.com</DNSDomain>
+            <DNSSuffixSearchOrder>
+                <DomainName wcm:action="add" wcm:keyValue="1">inmylab.de</DomainName>
+            </DNSSuffixSearchOrder>
+            <UseDomainNameDevolution>true</UseDomainNameDevolution>
+            <Interfaces>
+                <Interface wcm:action="add">
+                    <Identifier>Ethernet 3</Identifier>
+                    <DNSDomain>inmylab.de</DNSDomain>
+                    <DNSServerSearchOrder>
+                        <IpAddress wcm:action="add" wcm:keyValue="1">10.0.0.1</IpAddress>
+                    </DNSServerSearchOrder>
+                    <EnableAdapterDomainNameRegistration>true</EnableAdapterDomainNameRegistration>
+                    <DisableDynamicUpdate>false</DisableDynamicUpdate>
+                </Interface>
+            </Interfaces>
+        </component>
+    </settings>
+    <settings pass="oobeSystem">
+        <component name="Microsoft-Windows-Shell-Setup" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS" xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+			<OOBE>
+				<HideEULAPage>true</HideEULAPage>
+				<HideOEMRegistrationScreen>true</HideOEMRegistrationScreen>
+				<HideOnlineAccountScreens>true</HideOnlineAccountScreens>
+				<HideWirelessSetupInOOBE>true</HideWirelessSetupInOOBE>
+				<NetworkLocation>Work</NetworkLocation>
+				<ProtectYourPC>1</ProtectYourPC>
+				<SkipUserOOBE>true</SkipUserOOBE>
+				<SkipMachineOOBE>true</SkipMachineOOBE>
+			</OOBE>
+			<UserAccounts>
+				<AdministratorPassword>
+                    <Value>Sepago123Ti</Value>
+                    <PlainText>true</PlainText>
+                </AdministratorPassword>
+                <LocalAccounts>
+					<LocalAccount wcm:action="add">
+						<Password>
+							<Value>Sepago123Ti</Value>
+							<PlainText>true</PlainText>
+						</Password>
+						<Description></Description>
+						<DisplayName>ndille</DisplayName>
+						<Group>Administrators</Group>
+						<Name>ndille</Name>
+					</LocalAccount>
+				</LocalAccounts>
+			</UserAccounts>
+			<RegisteredOrganization></RegisteredOrganization>
+			<RegisteredOwner>ndille</RegisteredOwner>
+			<DisableAutoDaylightTimeSet>false</DisableAutoDaylightTimeSet>
+			<TimeZone>W. Europe Standard Time</TimeZone>
+			<VisualEffects>
+				<SystemDefaultBackgroundColor>2</SystemDefaultBackgroundColor>
+			</VisualEffects>
+		</component>
+	</settings>
+</unattend>
